@@ -27,7 +27,16 @@ public class MainApp {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        try {
+            ViSentenceDetector visd = new ViSentenceDetector();
+            // 1. Training
+            //visd.train();
+            
+            // 2. Test
+            visd.test();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }
