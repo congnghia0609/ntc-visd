@@ -115,7 +115,7 @@
                     <archive>
                         <addMavenDescriptor>false</addMavenDescriptor>
                         <manifest>
-                            <!--<mainClass>com.ntc.app.MainApp</mainClass>-->
+                            <mainClass>com.ntc.app.MainApp</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>

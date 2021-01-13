@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.ntc.visd;
+package com.ntc.app;
+
+import com.ntc.visd.ViSentenceDetector;
 
 /**
  *
