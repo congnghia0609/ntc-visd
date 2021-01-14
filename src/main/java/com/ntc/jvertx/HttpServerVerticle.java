@@ -63,7 +63,6 @@ public class HttpServerVerticle extends AbstractVerticle {
 
         Router apiRouter = Router.router(vertx);
         // Public Zone.
-        apiRouter.get("/get").handler(this::sdHandler);
         apiRouter.post("/post").handler(this::sdHandler);
         router.mountSubRouter("/sd/v1", apiRouter);
 
