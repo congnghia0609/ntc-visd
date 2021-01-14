@@ -30,21 +30,21 @@ public class MainVerticle extends AbstractVerticle {
     @Override
     public void start(Promise<Void> promise) throws Exception {
         // 1. Sentence Detector Vert
-        Promise<String> sdVerticleDeployment = Promise.promise();
+        Promise<String> sdPromise = Promise.promise();
         vertx.deployVerticle(
-                SDVerticle.class, 
+                SDVerticle.class,
                 new DeploymentOptions().setInstances(2).setWorkerPoolSize(100), 
-                sdVerticleDeployment);
-        sdVerticleDeployment.future().compose(id -> { // id: 9d61936e-8e08-46ca-950e-2d85d4580acb
+                sdPromise);
+        sdPromise.future().compose(id -> { // id: 9d61936e-8e08-46ca-950e-2d85d4580acb
 
             // 3. Http Vert
-            Promise<String> httpVerticleDeployment = Promise.promise();
+            Promise<String> httpPromise = Promise.promise();
             vertx.deployVerticle(
                     HttpServerVerticle.class,
                     new DeploymentOptions().setInstances(2).setWorkerPoolSize(100),
-                    httpVerticleDeployment);
+                    httpPromise);
 
-            return httpVerticleDeployment.future();
+            return httpPromise.future();
         }).onComplete(ar -> {
             if (ar.succeeded()) {
                 promise.complete();
