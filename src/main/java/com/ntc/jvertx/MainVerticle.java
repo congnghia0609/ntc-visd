@@ -37,7 +37,7 @@ public class MainVerticle extends AbstractVerticle {
                 sdPromise);
         sdPromise.future().compose(id -> { // id: 9d61936e-8e08-46ca-950e-2d85d4580acb
 
-            // 3. Http Vert
+            // 2. Http Vert
             Promise<String> httpPromise = Promise.promise();
             vertx.deployVerticle(
                     HttpServerVerticle.class,
