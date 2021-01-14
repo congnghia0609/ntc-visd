@@ -37,10 +37,29 @@ public class SdService {
     private SentenceDetectorME viSdME;
 
     public SdService() throws IOException {
-        InputStream streamModel = getResourceAsStream(pathModelSD);
         // Load model
+        InputStream streamModel = getResourceAsStream(pathModelSD);
         SentenceModel model = new SentenceModel(streamModel);
         viSdME = new SentenceDetectorME(model);
+    }
+
+    public SdService(String pathModel) throws IOException {
+        if (pathModel == null || pathModel.isEmpty()) {
+            throw new ExceptionInInitializerError("Path model is NULL or empty.");
+        }
+        this.pathModelSD = pathModel;
+        // Load model
+        InputStream streamModel = getResourceAsStream(pathModelSD);
+        SentenceModel model = new SentenceModel(streamModel);
+        viSdME = new SentenceDetectorME(model);
+    }
+
+    public String getPathModelSD() {
+        return pathModelSD;
+    }
+
+    public SentenceDetectorME getViSdME() {
+        return viSdME;
     }
     
     public InputStream getResourceAsStream(String name) {
