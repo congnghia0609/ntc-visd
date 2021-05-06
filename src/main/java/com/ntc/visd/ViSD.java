@@ -16,8 +16,11 @@
 
 package com.ntc.visd;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
+import java.util.List;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
 import org.slf4j.Logger;
@@ -46,7 +49,7 @@ public class ViSD {
         }
         this.pathModelSD = pathModel;
         // Load model
-        InputStream streamModel = getResourceAsStream(pathModelSD);
+        InputStream streamModel = new FileInputStream(pathModelSD);
         SentenceModel model = new SentenceModel(streamModel);
         viSdME = new SentenceDetectorME(model);
     }
@@ -77,4 +80,10 @@ public class ViSD {
         return viSdME.sentDetect(s);
     }
     
+    public List<String> visd2List(String s) {
+        if (s == null || s.isEmpty()) {
+            return null;
+        }
+        return Arrays.asList(viSdME.sentDetect(s));
+    }
 }
