@@ -23,8 +23,6 @@ import java.util.Arrays;
 import java.util.List;
 import opennlp.tools.sentdetect.SentenceDetectorME;
 import opennlp.tools.sentdetect.SentenceModel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -32,7 +30,7 @@ import org.slf4j.LoggerFactory;
  * @since Jan 15, 2021
  */
 public class ViSD {
-    private static final Logger log = LoggerFactory.getLogger(ViSD.class);
+    //private static final Logger log = LoggerFactory.getLogger(ViSD.class);
     private String pathModelSD = "models/sd/visd-latest.bin";
     private SentenceDetectorME viSdME;
 
@@ -51,6 +49,12 @@ public class ViSD {
         // Load model
         InputStream streamModel = new FileInputStream(pathModelSD);
         SentenceModel model = new SentenceModel(streamModel);
+        viSdME = new SentenceDetectorME(model);
+    }
+    
+    public ViSD(InputStream in) throws IOException {
+        // Load model
+        SentenceModel model = new SentenceModel(in);
         viSdME = new SentenceDetectorME(model);
     }
 

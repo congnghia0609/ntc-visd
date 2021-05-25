@@ -16,8 +16,7 @@
 
 package com.ntc.app;
 
-import com.ntc.visd.ViSentenceDetector;
-import io.vertx.core.Launcher;
+import com.ntc.visd.TrainViSD;
 
 /**
  *
@@ -32,15 +31,12 @@ public class MainApp {
     public static void main(String[] args) {
         try {
             // 1. Training
-            //ViSentenceDetector visd = new ViSentenceDetector();
+            //TrainViSD visd = new TrainViSD();
             //visd.train();
             
             // 2. Test
-            //ViSentenceDetector visd = new ViSentenceDetector();
+            //TrainViSD visd = new TrainViSD();
             //visd.test();
-            
-            // 3. Start VertX Http Server
-            Launcher.executeCommand("run", "com.ntc.jvertx.MainVerticle");
         } catch (Exception e) {
             e.printStackTrace();
         }

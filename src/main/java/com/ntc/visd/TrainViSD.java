@@ -45,7 +45,7 @@ import opennlp.tools.util.TrainingParameters;
  * @author nghiatc
  * @since Jan 13, 2021
  */
-public class ViSentenceDetector {
+public class TrainViSD {
 
     public void train() throws FileNotFoundException, IOException {
         // File to save the model ViSD
